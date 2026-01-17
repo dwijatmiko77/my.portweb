@@ -347,27 +347,27 @@ span {
 
 a i.ig {
   animation-duration: 2000ms;
-  animation-delay   : 500ms;
+  animation-delay   : 1000ms;
 }
 
 a i.tiktok {
   animation-duration: 2000ms;
-  animation-delay   : 1000ms;
+  animation-delay   : 2000ms;
 }
 
 a i.fb {
   animation-duration: 2000ms;
-  animation-delay   : 1500ms;
+  animation-delay   : 3000ms;
 }
 
 a i.linkd {
   animation-duration: 2000ms;
-  animation-delay   : 2000ms;
+  animation-delay   : 4000ms;
 }
 
 a i.git {
   animation-duration: 2000ms;
-  animation-delay   : 2500ms;
+  animation-delay   : 5000ms;
 }
 
 .btn {

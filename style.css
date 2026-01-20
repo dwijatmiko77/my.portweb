@@ -426,6 +426,9 @@ a i.git {
 }
 
 @keyframes words {
+from {
+        opacity: 0%;
+    }
 
   0%,
   20% {
@@ -451,6 +454,9 @@ a i.git {
   100% {
     content: "Editor";
   }
+to {
+        opacity: 100%;
+    }
 }
 
 /* ========================================== */

@@ -426,14 +426,17 @@ a i.git {
 }
 
 @keyframes words {
+
 from {
         opacity: 0%;
     }
-
   0%,
   20% {
     content: "Web Developer";
   }
+to {
+        opacity: 100%;
+    }
 
   21%,
   40% {
@@ -454,9 +457,6 @@ from {
   100% {
     content: "Editor";
   }
-to {
-        opacity: 100%;
-    }
 }
 
 /* ========================================== */

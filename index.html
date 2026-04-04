@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dwi Jatmiko | Portfolio - Web Developer & Designer</title>
+    <link rel="icon" href="media/Profil miko.png" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #dc2626;
+            --accent: #f59e0b;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gradient: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--light);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.5rem 5%;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 100px 5% 50px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: var(--gradient);
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(30, 58, 138, 0.4);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            width: 350px;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            animation: fadeIn 1s ease-in;
+        }
+
+        .badge {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: var(--secondary);
+            color: white;
+            padding: 1rem;
+            border-radius: 50%;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        section {
+            padding: 80px 5%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: #64748b;
+        }
+
+        .underline {
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        /* About Section - Improved */
+        .about {
+            background: white;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .info-card h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        .info-item {
+            margin-bottom: 1.2rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-label i {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            width: 20px;
+        }
+
+        .info-value {
+            color: #334155;
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding-left: 1.5rem;
+        }
+
+        /* Special styling for education */
+        .education-block {
+            background: white;
+            padding: 1rem;
+            border-radius: 12px;
+            margin-top: 0.5rem;
+            border-left: 3px solid var(--secondary);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .education-level {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .education-school {
+            color: #64748b;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .about-content p {
+            line-height: 1.8;
+            color: #475569;
+            margin-bottom: 1rem;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #fef3c7 0%, #fef3c7 100%);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .experience {
+            background: linear-gradient(to bottom, #f8fafc, #e2e8f0);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+            width: 50%;
+            padding: 0 2rem;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--secondary);
+            border-radius: 50%;
+            top: 0;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+        }
+
+        .timeline-date {
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .timeline-title {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        .timeline-company {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .projects {
+            background: white;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border: 1px solid #e2e8f0;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .project-image {
+            height: 300px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '🌐';
+            font-size: 4rem;
+            opacity: 0.3;
+        }
+
+        .project-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .project-info {
+            padding: 2rem;
+        }
+
+        .project-info h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-info p {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: gap 0.3s;
+        }
+
+        .project-link:hover {
+            gap: 1rem;
+        }
+
+        .certificates {
+            background: var(--dark);
+            color: white;
+        }
+
+        .certificates .section-title h2,
+        .certificates .section-title p {
+            color: white;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .cert-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .cert-card:hover::before {
+            left: 100%;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .cert-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .cert-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .cert-org {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .cert-year {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .skills {
+            background: #f1f5f9;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-percent {
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 4px;
+            transition: width 1s ease-out;
+            width: 0;
+        }
+
+        .contact {
+            background: white;
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--dark);
+            transition: all 0.3s;
+            padding: 1rem;
+            border-radius: 10px;
+        }
+
+        .contact-item:hover {
+            background: var(--light);
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .social-links {
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-image img {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 50px;
+                text-align: left !important;
+            }
+            
+            .timeline-dot {
+                left: 10px !important;
+                right: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Dwi Jatmiko</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#experience">Pengalaman</a></li>
+                <li><a href="#projects">Projek</a></li>
+                <li><a href="#certificates">Sertifikat</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content fade-in">
+                <h1>Dwi Jatmiko</h1>
+                <div class="subtitle">Web Developer & Designer</div>
+                <p>Mahasiswa S1 Sistem & Teknologi Informasi | Anggota Komisi 2 DPM | Juara 2 Lomba Web Design</p>
+                <p style="font-size: 0.95rem; margin-top: 1rem;">
+                    <i class="fas fa-map-marker-alt" style="color: var(--secondary);"></i> 
+                    Grobogan, Jawa Tengah, Indonesia
+                </p>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fas fa-eye"></i> Lihat Projek
+                    </a>
+                    <a href="https://dewanperwakilanmahasiswa-uwhs.great-site.net" target="_blank" class="btn btn-secondary">
+                        <i class="fas fa-external-link-alt"></i> Website DPM
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image fade-in">
+                <img src="media/Komisi 2.png" alt="Dwi Jatmiko">
+                <div class="badge">
+                    <i class="fas fa-trophy"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section - Improved Layout -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Tentang Saya</h2>
+                <div class="underline"></div>
+                <p>Pengembang web dengan pengalaman industri dan organisasi</p>
+            </div>
+            
+            <div class="about-grid">
+                <div class="info-card fade-in">
+                    <h3><i class="fas fa-user-circle"></i> Data Diri</h3>
+                    
+                    <div class="info-item">
+                        <span class="info-label"><i class="fas fa-user"></i> Nama Lengkap</span>
+                        <span class="info-value">Dwi Jatmiko</span>
+                    </div>
+                    
+                    <div class="info-item">
+                        <span class="info-label"><i class="fas fa-address-card"></i> Panggilan</span>
+                        <span class="info-value">Miko</span>
+                    </div>
+                    
+                    <div class="info-item">
+                        <span class="info-label"><i class="fas fa-graduation-cap"></i> Pendidikan</span>
+                        <div class="education-block">
+                            <div class="education-level">S1 Sistem & Teknologi Informasi</div>
+                            <div class="education-school">Universitas Widya Husada Semarang</div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <span class="info-label"><i class="fas fa-heart"></i> Status</span>
+                        <span class="info-value">Belum Menikah</span>
+                    </div>
+                    
+                    <div class="info-item">
+                        <span class="info-label"><i class="fas fa-flag"></i> Kewarganegaraan</span>
+                        <span class="info-value">Indonesia</span>
+                    </div>
+                    
+                    <div class="info-item">
+                        <span class="info-label"><i class="fas fa-praying-hands"></i> Agama</span>
+                        <span class="info-value">Islam</span>
+                    </div>
+                </div>
+                
+                <div class="about-content fade-in">
+                    <h3>Kisah Perjalanan Saya</h3>
+                    <p>
+                        Saya adalah lulusan <span class="highlight">SMK Negeri 1 Juwangi - Boyolali</span> yang memulai karir di industri manufaktur selama <strong>7 tahun</strong> sebagai Operator Produksi di PT. Nippon Indosari Corpindo Tbk (2015-2022).
+                    </p>
+                    <p>
+                        Ketertarikan saya pada teknologi membawa saya melanjutkan pendidikan ke <strong>Universitas Widya Husada Semarang</strong>, jurusan <span class="highlight">S1 Sistem & Teknologi Informasi</span>. Di <strong>semester 3</strong>, saya memutuskan untuk aktif berorganisasi dan bergabung dengan <span class="highlight">Dewan Perwakilan Mahasiswa (DPM)</span> sebagai bentuk kontribusi nyata dalam kemahasiswaan.
+                    </p>
+                    <p>
+                        Sebagai <strong>Anggota Komisi 2 DPM</strong> periode 2023/2024, saya tidak hanya aktif dalam advokasi mahasiswa, tetapi juga mengaplikasikan skill teknologi saya dengan membangun <span class="highlight">website resmi DPM</span> dan meraih <strong>Juara 2 Lomba Web Design</strong>.
+                    </p>
+                    <div style="margin-top: 2rem; padding: 1rem; background: #fef3c7; border-radius: 10px; border-left: 4px solid var(--accent);">
+                        <i class="fas fa-quote-left" style="color: var(--accent); font-size: 1.5rem; margin-bottom: 0.5rem;"></i>
+                        <p style="font-style: italic; color: #92400e; margin: 0;">
+                            "Bergabung dengan DPM di semester 3 adalah komitmen saya untuk berkontribusi dalam kemahasiswaan sambil mengembangkan passion di bidang web development."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Pengalaman</h2>
+                <div class="underline"></div>
+                <p>Perjalanan karir dan organisasi</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023 - 2024</div>
+                        <div class="timeline-title">Anggota Komisi 2</div>
+                        <div class="timeline-company">
+                            <i class="fas fa-university"></i> Dewan Perwakilan Mahasiswa (DPM) - Universitas Widya Husada Semarang
+                        </div>
+                        <p style="margin-top: 1rem; color: #64748b; font-size: 0.9rem;">
+                            Aktif dalam pengawasan dan evaluasi kebijakan kampus, serta membangun website DPM untuk meningkatkan transparansi informasi organisasi.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Agustus - Desember 2025</div>
+                        <div class="timeline-title">Operator Sewing</div>
+                        <div class="timeline-company">
+                            <i class="fas fa-industry"></i> PT. Sioen Semarang Asia
+                        </div>
+                        <p style="margin-top: 1rem; color: #64748b; font-size: 0.9rem;">
+                            Bertanggung jawab atas operasional mesin jahit dan quality control produk tekstil.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Desember 2024 - Juli 2025</div>
+                        <div class="timeline-title">Operator Sewing</div>
+                        <div class="timeline-company">
+                            <i class="fas fa-industry"></i> PT. John's Glove Factory
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2015 - 2022 (7 Tahun)</div>
+                        <div class="timeline-title">Operator Produksi</div>
+                        <div class="timeline-company">
+                            <i class="fas fa-industry"></i> PT. Nippon Indosari Corpindo Tbk
+                        </div>
+                        <p style="margin-top: 1rem; color: #64748b; font-size: 0.9rem;">
+                            Pengalaman panjang di industri manufaktur roti nasional yang membentuk disiplin kerja, ketelitian, dan kemampuan kerja sama tim.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Projek Unggulan</h2>
+                <div class="underline"></div>
+                <p>Hasil karya teknologi dan desain</p>
+            </div>
+            
+            <div class="project-card fade-in" style="max-width: 800px; margin: 0 auto;">
+                <div class="project-image">
+                    <div class="project-badge">WEBSITE RESMI</div>
+                    <div style="text-align: center; color: white; z-index: 1;">
+                        <i class="fas fa-globe" style="font-size: 5rem; margin-bottom: 1rem;"></i>
+                        <h3 style="font-size: 2rem;">DPM UWHS</h3>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Website Dewan Perwakilan Mahasiswa</h3>
+                    <p>
+                        Platform digital resmi DPM Universitas Widya Husada Semarang yang saya bangun untuk memfasilitasi transparansi informasi organisasi, komunikasi antar mahasiswa, dan dokumentasi kegiatan. Website ini menjadi bukti kontribusi nyata saya dalam DPM sekaligus aplikasi dari kemenangan Juara 2 Lomba Web Design.
+                    </p>
+                    <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+                        <span style="background: #dbeafe; color: #1e40af; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem;">HTML/CSS</span>
+                        <span style="background: #fef3c7; color: #92400e; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem;">Web Design</span>
+                        <span style="background: #fce7f3; color: #be185d; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem;">Responsive</span>
+                    </div>
+                    <a href="https://dewanperwakilanmahasiswa-uwhs.great-site.net" target="_blank" class="project-link">
+                        Kunjungi Website <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section class="certificates" id="certificates">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Sertifikat & Prestasi</h2>
+                <div class="underline" style="background: var(--accent);"></div>
+                <p style="color: #94a3b8;">Pengakuan dan pencapaian</p>
+            </div>
+            
+            <div class="cert-grid">
+                <div class="cert-card fade-in">
+                    <div class="cert-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="cert-title">Sertifikat Penghargaan</h3>
+                    <p class="cert-org">Dewan Perwakilan Mahasiswa<br>Universitas Widya Husada Semarang</p>
+                    <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 1rem;">
+                        Atas kontribusi sebagai Anggota Komisi 2 DPM periode 2023/2024
+                    </p>
+                    <span class="cert-year">2023/2024</span>
+                </div>
+                
+                <div class="cert-card fade-in">
+                    <div class="cert-icon" style="color: #fbbf24;">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3 class="cert-title">Juara 2 Lomba Web Design</h3>
+                    <p class="cert-org">Kompetisi Web Design</p>
+                    <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 1rem;">
+                        Penghargaan atas kemampuan desain dan pengembangan website terbaik
+                    </p>
+                    <span class="cert-year">Prestasi</span>
+                </div>
+                
+                <div class="cert-card fade-in">
+                    <div class="cert-icon" style="color: #34d399;">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="cert-title">Website DPM UWHS</h3>
+                    <p class="cert-org">Project Implementation</p>
+                    <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 1rem;">
+                        Pengembangan website resmi organisasi kemahasiswaan
+                    </p>
+                    <span class="cert-year">Project</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Keahlian</h2>
+                <div class="underline"></div>
+                <p>Kompetensi teknis dan soft skills</p>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-card fade-in">
+                    <div class="skill-header">
+                        <span class="skill-name">
+                            <i class="fas fa-laptop-code" style="color: var(--primary);"></i>
+                            Web Development
+                        </span>
+                        <span class="skill-percent">90%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="90"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card fade-in">
+                    <div class="skill-header">
+                        <span class="skill-name">
+                            <i class="fas fa-palette" style="color: var(--secondary);"></i>
+                            Web Design (Canva)
+                        </span>
+                        <span class="skill-percent">85%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="85"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card fade-in">
+                    <div class="skill-header">
+                        <span class="skill-name">
+                            <i class="fas fa-file-word" style="color: #2563eb;"></i>
+                            Microsoft Office
+                        </span>
+                        <span class="skill-percent">80%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="80"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card fade-in">
+                    <div class="skill-header">
+                        <span class="skill-name">
+                            <i class="fas fa-users" style="color: var(--accent);"></i>
+                            Kerja Sama Tim
+                        </span>
+                        <span class="skill-percent">95%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="95"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card fade-in">
+                    <div class="skill-header">
+                        <span class="skill-name">
+                            <i class="fas fa-comments" style="color: #8b5cf6;"></i>
+                            Komunikasi
+                        </span>
+                        <span class="skill-percent">85%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="85"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card fade-in">
+                    <div class="skill-header">
+                        <span class="skill-name">
+                            <i class="fas fa-clock" style="color: #059669;"></i>
+                            Manajemen Waktu
+                        </span>
+                        <span class="skill-percent">90%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="90"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Hubungi Saya</h2>
+                <div class="underline"></div>
+                <p>Tertarik untuk berkolaborasi? Silakan hubungi saya</p>
+            </div>
+            
+            <div class="contact-content fade-in">
+                <div class="contact-links">
+                    <a href="mailto:dwi.jatmiko77@outlook.com" class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <span>Email</span>
+                        <small>dwi.jatmiko77@outlook.com</small>
+                    </a>
+                    
+                    <a href="tel:087717090030" class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <span>Telepon</span>
+                        <small>0877 1709 0030</small>
+                    </a>
+                    
+                    <a href="https://dewanperwakilanmahasiswa-uwhs.great-site.net" target="_blank" class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <span>Website DPM</span>
+                        <small>Lihat Projek</small>
+                    </a>
+                </div>
+                
+                <div style="margin-top: 3rem; padding: 2rem; background: linear-gradient(135deg, #1e3a8a, #3b82f6); border-radius: 20px; color: white;">
+                    <h3 style="margin-bottom: 1rem;"><i class="fas fa-map-marker-alt"></i> Lokasi</h3>
+                    <p>Kota Semarang, Jawa Tengah, Indonesia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/dwi-jatmiko-aa86932ab/"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/dwijatmiko77"><i class="fab fa-github"></i></a>
+            <a href="https://www.instagram.com/ya_hiiko/"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>&copy; 2026 Dwi Jatmiko. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #94a3b8;">
+            <i class="fas fa-code"></i> with <i class="fas fa-heart" style="color: var(--secondary);"></i> by Dwi Jatmiko
+        </p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Animate on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    const progressBars = entry.target.querySelectorAll('.progress-fill');
+                    progressBars.forEach(bar => {
+                        const width = bar.getAttribute('data-width');
+                        bar.style.width = width + '%';
+                    });
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '100%';
+            navLinks.style.left = '0';
+            navLinks.style.width = '100%';
+            navLinks.style.background = 'white';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.padding = '1rem';
+            navLinks.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+        });
+    </script>
+</body>
+</html>

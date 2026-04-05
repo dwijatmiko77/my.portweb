@@ -24,13 +24,16 @@
         }
 
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+             margin: 0;
+             padding: 0;
+             box-sizing: border-box;
+         }
 
         html {
-            scroll-behavior: smooth;
+             scroll-behavior: smooth;
+             width: 100%;
+             max-width: 100%;
+             overflow-x: hidden;
         }
         
         .whatsapp-float {
@@ -105,11 +108,14 @@
         }
         
         body {
-            width: 100%;
-            font-family: 'Poppins', sans-serif;
-            background: var(--light);
-            color: var(--dark);
-            overflow-x: hidden;
+             width: 100%;
+             max-width: 100%;
+             font-family: 'Poppins', sans-serif;
+             background: var(--light);
+             color: var(--dark);
+             overflow-x: hidden;
+             margin: 0;
+             padding: 0;
         }
 
         ::-webkit-scrollbar {
@@ -129,6 +135,7 @@
             top: 0;
             left: 0;
             width: 100%;
+            max-width: 100%;
             padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
@@ -138,7 +145,8 @@
             backdrop-filter: blur(20px);
             border-bottom: 1px solid #8B0000;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+            box-sizing: border-box;  /* ✅ Penting */
+         }
 
         .nav-logo {
             font-size: 1.5rem;
@@ -345,6 +353,9 @@
             position: relative;
             overflow: hidden;
             padding: 100px 5% 50px;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
         }
 
         .hero::before {
@@ -473,6 +484,9 @@
 
         section {
             padding: 80px 5%;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
         }
 
         .container {

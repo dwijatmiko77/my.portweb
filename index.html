@@ -380,13 +380,18 @@
             margin-bottom: 0.5rem;
             line-height: 1.2;
         }
-
+        
         .hero-content .subtitle {
             font-size: 1.2rem;
-            color: linear-gradient(45deg, #000000, #800000);
             font-weight: 700;
             margin-bottom: 1rem;
-        }
+    /* Gradient text yang benar */
+            background: linear-gradient(45deg, #000000, #800000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text; /* untuk browser modern */
+}
+
 
         .hero-content p {
             font-size: 1.1rem;

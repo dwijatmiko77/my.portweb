@@ -932,6 +932,14 @@
             margin-bottom: 0.5rem;
             color: white;
         }
+        
+        .cert-title sup {
+            font-size: 0.45em;
+            vertical-align: super;
+            color: #777;
+            font-weight: 600;
+            margin-left: 2px;
+        }
 
         .cert-org {
             color: #94a3b8;

@@ -396,6 +396,14 @@
             margin-bottom: 2rem;
             line-height: 1.8;
         }
+        
+        .hero-content p sup {
+            font-size: 0.45em;
+            vertical-align: super;
+            color: #777;
+            font-weight: 600;
+            margin-left: 2px;
+        }
 
         .cta-buttons {
             display: flex;
